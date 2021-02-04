@@ -1,7 +1,7 @@
 # Weirdtext
 It is a python script to encode and decode messages to a weird form of the text. 
 
-##Endcoder
+## Endcoder
 
 Encoder is encoding given plaintext to a weirdtext form and returns tuple containing
 - encoded text
