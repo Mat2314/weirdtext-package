@@ -49,8 +49,12 @@ def decode_word(encoded_word: str, original_words: list) -> str:
     :return: Decoded word found in original_words list
     """
     for word in original_words:
-        if len(word) == len(encoded_word) and word[0] == encoded_word[0] and word[-1] == encoded_word[-1]:
-            # If both words are the same size and their edge letters are the same return the word as decoded
+        if len(word) == len(encoded_word) and \
+                word[0] == encoded_word[0] and \
+                word[-1] == encoded_word[-1] and \
+                sorted(word[1:-1]) == sorted(encoded_word[1:-1]):
+            # If both words are the same size and their all letters are the same
+            # return the word as decoded
             return word
 
 
@@ -82,6 +86,6 @@ def decode(weirdtext: str, original_words: list) -> str:
     # Substitute encoded words with decoded words
     original_message = weirdtext
     for i in range(len(decoded_words_list)):
-        original_message = original_message.replace(encoded_words[i], decoded_words_list[i], 1)
+        original_message = re.sub(encoded_words[i], decoded_words_list[i], original_message, 1)
 
     return original_message
